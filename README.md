@@ -1,5 +1,5 @@
 Autors:
-Diego Cisneros
-Jorge Grajal 
-Francico Carrera
-Rodrigo Gutierrez
+Diego Cisneros ,
+Jorge Grajal ,
+Francico Carrera ,
+Rodrigo Gutierrez.
