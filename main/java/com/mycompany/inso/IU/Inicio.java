@@ -1,6 +1,5 @@
 package com.mycompany.inso.IU;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,6 +9,7 @@ import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+
 import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JRadioButton;
@@ -31,11 +31,13 @@ public class Inicio extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtBuscar;
+	public String tipo;
+	public String nombre;
 
 	/**
 	 * Create the frame.
 	 */
-	public Inicio() {
+	public Inicio(/*Usuario u*/) {	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1920, 1080);
 		contentPane = new JPanel();
@@ -98,25 +100,106 @@ public class Inicio extends JFrame {
 		ImageIcon icono2 = new ImageIcon("src/main/java/img/lupa.png");
 		icono2.setImage(icono2.getImage().getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
 		JButton btnNewButton = new JButton(icono2);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*ListaContenido lc = new ListaContenido();
+				boolean checked = false;
+				if (rdbtnNewRadioButton.isSelected()) {
+					lc.setCheckPeli(true);
+					checked = true;
+				} else if (rdbtnSerie.isSelected()){
+					lc.setCheckSerie(true);
+					checked = true;
+				} else if (rdbtnActor.isSelected()){
+					lc.setCheckSerie(true);
+					checked = true;
+				} else if (rdbtnNewDirector.isSelected()){
+					lc.setCheckSerie(true);
+					checked = true;
+				} else if (rdbtnEstudio.isSelected()){
+					lc.setCheckSerie(true);
+					checked = true;
+				} else {
+					JOptionPane.showMessageDialog(null, "Selecciona el tipo de contenido que quieres buscar.", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				if (checked == true) {
+				    lc.setBusqueda(txtBuscar.getText());
+				    if (lc.getBusqueda == false) {
+				    	lblNewLabel_2.setVisible(true);
+				    } else {
+				    	lblNewLabel_2.setVisible(false);
+				    	if (lc.getCheckPeli() == true) {
+							Pelicula p = lc.getPelicula(txtBuscar.getText());
+							btnNewButton_2.setText(p.getTitulo());
+							ImageIcon icono = new ImageIcon(p.getImage());
+							tipo = "Pelicula";
+							nombre = p.getTitulo();
+						} else if (lc.getCheckSerie() == true){
+							Serie s = lc.getSerie(txtBuscar.getText());
+							btnNewButton_2.setText(s.getTitulo());
+							ImageIcon icono = new ImageIcon(s.getImage());
+							tipo = "Serie";
+							nombre = s.getTitulo();
+						} else if (lc.getCheckActor() == true){
+							Actor a = lc.getActor(txtBuscar.getText());
+							btnNewButton_2.setText(a.getTitulo());
+							ImageIcon icono = new ImageIcon(a.getImage());
+							tipo = "Actor";
+							nombre = a.getTitulo()
+						} else if (lc.getCheckDirector() == true){
+							Director d = lc.getDirector(txtBuscar.getText());
+							btnNewButton_2.setText(d.getTitulo());
+							ImageIcon icono = new ImageIcon(d.getImage());
+							tipo = "Director";
+							nombre = d.getTitulo()
+						} else if (lc.getCheckEstudio() == true){
+							Estudio s = lc.getEstudio(txtBuscar.getText());
+							btnNewButton_2.setText(e.getTitulo());
+							ImageIcon icono = new ImageIcon(e.getImage());
+							tipo = "Estudio";
+							nombre = e.getTitulo()
+				    	}
+				    	icono.setImage(icono.getImage().getScaledInstance(20, 30, java.awt.Image.SCALE_SMOOTH));
+						btnNewButton_1.setIcon(icono);
+						btnNewButton_1.setVisible(true);
+						btnNewButton_2.setVisible(true);
+				    }
+				}*/											
+			}
+		});
 		btnNewButton.setFocusPainted(false);
 		btnNewButton.setToolTipText("Buscar");
 		
 		JButton btnNewButton_1 = new JButton("New button");
+		//btnNewButton_1.setVisible(false);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Vista v = new Vista();
-				v.setVisible(true);
-				setVisible(false);
+				/*if (u.getRol() == "Administrador") {
+					Admin a = new Admin(tipo, nombre);
+					a.setVisible();
+					setVisible();
+				} else {*/
+					Vista v = new Vista(/*tipo, nombre, u*/);
+					v.setVisible(true);
+					setVisible(false);
+				//}
 			}
 		});
 		btnNewButton_1.setVisible(true);
 		
 		JButton btnNewButton_2 = new JButton("New button");
+		//btnNewButton_2.setVisible(false);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Vista v = new Vista();
+				/*if (u.getRol() == "Administrador") {
+				Admin a = new Admin(tipo, nombre);
+				a.setVisible();
+				setVisible();
+			} else {*/
+				Vista v = new Vista(/*tipo, nombre, u*/);
 				v.setVisible(true);
 				setVisible(false);
+			//}
 			}
 		});
 		btnNewButton_2.setVisible(true);	
@@ -133,7 +216,7 @@ public class Inicio extends JFrame {
 		JButton btnNewButton_3 = new JButton("Ver Perfil");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Perfil p = new Perfil();
+				Perfil p = new Perfil(/*u*/);
 				p.setVisible(true);
 				setVisible(false);
 			}
@@ -148,11 +231,35 @@ public class Inicio extends JFrame {
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		JButton btnNewButton_4 = new JButton("Añadir contenido");
+		/*if (u.getRol == "Administrador") {
+			btnNewButton_5.setVisible(false);
+		}*/
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Admin a = new Admin();
-				a.setVisible(true);
-				setVisible(false);
+				/*boolean checked;
+				if (rdbtnNewRadioButton.isSelected()) {
+					tipo = "Pelicula";
+					checked = true;
+				} else if (rdbtnSerie.isSelected()){
+					tipo = "Serie";
+					checked = true;
+				} else if (rdbtnActor.isSelected()){
+					tipo = "Actor";
+					checked = true;
+				} else if (rdbtnNewDirector.isSelected()){
+					tipo = "Director";
+					checked = true;
+				} else if (rdbtnEstudio.isSelected()){
+					tipo = "Estudio";
+					checked = true;
+				} else {
+					JOptionPane.showMessageDialog(null, "Selecciona el tipo de contenido que quieres añadir.", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				if (checked == true) {*/
+					Admin a = new Admin(/*"Nuevo", "tipo"*/);
+					a.setVisible(true);
+					setVisible(false);
+				//}
 			}
 		});
 		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
