@@ -34,7 +34,7 @@ public class Serie {
     @ManyToOne
     private Director director;
     @ManyToMany
-    private Actor actor;
+    private List<Actor> actor;
     @OneToMany
     private List<Resena> resena;
 
@@ -149,11 +149,11 @@ public class Serie {
         this.director = director;
     }
 
-    public Actor getActor() {
+    public List<Actor> getActor() {
         return actor;
     }
 
-    public void setActor(Actor actor) {
+    public void setActor(List<Actor> actor) {
         this.actor = actor;
     }
 

@@ -22,7 +22,7 @@ public class Estudio {
     private int patrimonio;
     
     
-    public Estudio(int estudio_id, String nombre, String fecha_FUndacion, String propietario, String sedes, int patrimonio, Pelicula pelis, Serie series) {
+    public Estudio(int estudio_id, String nombre, String fecha_FUndacion, String propietario, String sedes, int patrimonio) {
         this.estudio_id = estudio_id;
         this.nombre = nombre;
         this.fecha_FUndacion = fecha_FUndacion;
