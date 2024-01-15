@@ -111,7 +111,9 @@ public class InicioSesion extends JFrame {
 				}
 				//Usuario u = new Usuario();
 				//if (u.iniciarSesion(txtNombreDeUsuario.getText(), txtContrasea.getText())) {
-					Inicio i = new Inicio();
+					//String contraseña = new String(txtContrasea.getPassword());
+					//Usuario u = new Usuario();
+					Inicio i = new Inicio(/*u.getUser(txtNombreDeUsuario.getText(), contraseña)*/);
 					i.setVisible(true);
 					setVisible(false);
 				//}

@@ -197,6 +197,7 @@ public class Registro extends JFrame {
 						//Critico c = new Critico();
 						//if(c.registrarse(txtNombre.getText(), txtApellidos.getText(), txtNombreDeUsuario.getText(), txtContrasea.getText())) {
 							//c.medio = txtMedio.getText();
+							//Añadir a lista de Críticos
 							JOptionPane.showMessageDialog(null, "Te has registrado correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
 							InicioSesion s = new InicioSesion();
 							s.setVisible(true);
@@ -207,6 +208,7 @@ public class Registro extends JFrame {
 					} else {
 						//Usuario u = new Usuario();
 						//if(u.registrarse(txtNombre.getText(), txtApellidos.getText(), txtNombreDeUsuario.getText(), txtContrasea.getText())) {
+							//Añadir a lista de Usuarios
 							JOptionPane.showMessageDialog(null, "Te has registrado correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
 							InicioSesion s = new InicioSesion();
 							s.setVisible(true);
