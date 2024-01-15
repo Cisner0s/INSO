@@ -1,4 +1,4 @@
-package com.mycompany.inso.IU;
+package view;
 
 
 import javax.swing.JFrame;
@@ -26,7 +26,7 @@ import java.awt.event.ActionEvent;
 *
 * @author Francisco Carrera Martínez
 */
-public class Inicio extends JFrame {
+public class InicioWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -37,7 +37,7 @@ public class Inicio extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Inicio(/*Usuario u*/) {	
+	public InicioWindow(/*Usuario u*/) {	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1920, 1080);
 		contentPane = new JPanel();
@@ -216,7 +216,7 @@ public class Inicio extends JFrame {
 		JButton btnNewButton_3 = new JButton("Ver Perfil");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Perfil p = new Perfil(/*u*/);
+				PerfilWindow p = new PerfilWindow(/*u*/);
 				p.setVisible(true);
 				setVisible(false);
 			}
@@ -256,7 +256,7 @@ public class Inicio extends JFrame {
 					JOptionPane.showMessageDialog(null, "Selecciona el tipo de contenido que quieres añadir.", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 				if (checked == true) {*/
-					Admin a = new Admin(/*"Nuevo", "tipo"*/);
+					AdminWindow a = new AdminWindow(/*"Nuevo", "tipo"*/);
 					a.setVisible(true);
 					setVisible(false);
 				//}
@@ -267,7 +267,7 @@ public class Inicio extends JFrame {
 		JButton btnNewButton_5 = new JButton("Cerrar sesión");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InicioSesion i = new InicioSesion();
+				InicioSesionWindow i = new InicioSesionWindow();
 				i.setVisible(true);
 				setVisible(false);
 			}

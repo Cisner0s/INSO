@@ -1,6 +1,4 @@
-package com.mycompany.inso.IU;
-
-import java.awt.EventQueue;
+package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,7 +21,7 @@ import java.awt.event.ActionEvent;
 *
 * @author Francisco Carrera Martínez
 */
-public class Perfil extends JFrame {
+public class PerfilWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -73,7 +71,7 @@ public class Perfil extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Perfil(/*Usuario u*/) {
+	public PerfilWindow(/*Usuario u*/) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1920, 1080);
 		contentPane = new JPanel();

@@ -3,7 +3,7 @@
  */
 
 
-import view.InicioSesion;
+import view.InicioSesionWindow;
 import dao.DAO;
 import model.Director;
 
@@ -14,7 +14,7 @@ import model.Director;
 public class Main {
 
     public static void main(String[] args) {
-    	InicioSesion i = new InicioSesion();
+    	InicioSesionWindow i = new InicioSesionWindow();
         i.setVisible(true);
         DAO control = new DAO();
         control.guardarDirector(new Director("nombre", "fecha_Nacimiento", "sexo", "lugar_nacimiento", "nacionalidad", "premios", "nominaciones"));

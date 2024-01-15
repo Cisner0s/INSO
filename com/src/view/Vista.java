@@ -1,18 +1,14 @@
-package com.mycompany.inso.IU;
-
-import java.awt.EventQueue;
+package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -76,7 +72,7 @@ public class Vista extends JFrame {
 		JButton btnNewButton = new JButton("Atrás");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Inicio i = new Inicio();
+				InicioWindow i = new InicioWindow();
 				i.setVisible(true);
 				setVisible(false);
 			}

@@ -1,9 +1,7 @@
-package com.mycompany.inso.IU;
+package view;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -26,7 +24,7 @@ import java.awt.event.ActionEvent;
 *
 * @author Francisco Carrera Martínez
 */
-public class InicioSesion extends JFrame {
+public class InicioSesionWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -38,7 +36,7 @@ public class InicioSesion extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public InicioSesion() {
+	public InicioSesionWindow() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1920, 1080);
 		contentPane = new JPanel();
@@ -113,7 +111,7 @@ public class InicioSesion extends JFrame {
 				//if (u.iniciarSesion(txtNombreDeUsuario.getText(), txtContrasea.getText())) {
 					//String contraseña = new String(txtContrasea.getPassword());
 					//Usuario u = new Usuario();
-					Inicio i = new Inicio(/*u.getUser(txtNombreDeUsuario.getText(), contraseña)*/);
+					InicioWindow i = new InicioWindow(/*u.getUser(txtNombreDeUsuario.getText(), contraseña)*/);
 					i.setVisible(true);
 					setVisible(false);
 				//}
@@ -123,7 +121,7 @@ public class InicioSesion extends JFrame {
 		btnNewButton_1 = new JButton("¿No tienes cuenta? Regístrate");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Registro r = new Registro();
+				RegistroWindow r = new RegistroWindow();
 				r.setVisible(true);
 				setVisible(false);
 			}

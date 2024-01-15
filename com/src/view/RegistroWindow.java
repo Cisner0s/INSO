@@ -1,6 +1,4 @@
-package com.mycompany.inso.IU;
-
-import java.awt.EventQueue;
+package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,7 +23,7 @@ import java.awt.event.ActionEvent;
 *
 * @author Francisco Carrera Martínez
 */
-public class Registro extends JFrame {
+public class RegistroWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -39,7 +37,7 @@ public class Registro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Registro() {
+	public RegistroWindow() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1920, 1080);
 		contentPane = new JPanel();
@@ -199,7 +197,7 @@ public class Registro extends JFrame {
 							//c.medio = txtMedio.getText();
 							//Añadir a lista de Críticos
 							JOptionPane.showMessageDialog(null, "Te has registrado correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
-							InicioSesion s = new InicioSesion();
+							InicioSesionWindow s = new InicioSesionWindow();
 							s.setVisible(true);
 							setVisible(false);
 						//} else {
@@ -210,7 +208,7 @@ public class Registro extends JFrame {
 						//if(u.registrarse(txtNombre.getText(), txtApellidos.getText(), txtNombreDeUsuario.getText(), txtContrasea.getText())) {
 							//Añadir a lista de Usuarios
 							JOptionPane.showMessageDialog(null, "Te has registrado correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
-							InicioSesion s = new InicioSesion();
+							InicioSesionWindow s = new InicioSesionWindow();
 							s.setVisible(true);
 							setVisible(false);
 						//} else {
@@ -226,7 +224,7 @@ public class Registro extends JFrame {
 		btnNewButton_1 = new JButton("Atrás");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InicioSesion s = new InicioSesion();
+				InicioSesionWindow s = new InicioSesionWindow();
 				s.setVisible(true);
 				setVisible(false);
 			}

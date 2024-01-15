@@ -1,6 +1,4 @@
-package com.mycompany.inso.IU;
-
-import java.awt.EventQueue;
+package view;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -22,7 +20,7 @@ import java.awt.event.ActionEvent;
 *
 * @author Francisco Carrera Martínez
 */
-public class Admin extends JFrame {
+public class AdminWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -43,7 +41,7 @@ public class Admin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Admin(/*String nombre, String tipo*/) {
+	public AdminWindow(/*String nombre, String tipo*/) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1920, 1080);
 		contentPane = new JPanel();
@@ -224,7 +222,7 @@ public class Admin extends JFrame {
 		btnNewButton_1 = new JButton("Atrás");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Inicio i = new Inicio();
+				InicioWindow i = new InicioWindow();
 				i.setVisible(true);
 				setVisible(false);
 			}
