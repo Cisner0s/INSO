@@ -7,5 +7,10 @@ El proyecto TopFilms es un sistema de gestión de información sobre películas,
 - Diego Cisneros
 - Jorge Grajal
 - Francico Carrera
-- Rodrigo GutierrezProject: TopFilms
-Autors: Diego Cisneros, Jorge Grajal, Francico Carrera, Rodrigo Gutierrez.
+- Rodrigo Gutierrez
+- 
+- ## Tecnologías Utilizadas
+- Java
+- Base de datos SQLite
+- Maven (para la gestión de dependencias)
+- Otros...
