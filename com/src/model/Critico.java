@@ -13,7 +13,11 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name = "id_Critico")
 public class Critico extends Usuario implements Serializable{
 
-    @OneToMany
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@OneToMany
     private List<Critica> critica;
 
 

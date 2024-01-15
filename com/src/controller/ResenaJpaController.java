@@ -14,7 +14,11 @@ import javax.persistence.Persistence;
  */
 public class ResenaJpaController implements Serializable {
 
-    private EntityManagerFactory emf;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private EntityManagerFactory emf;
 
     public ResenaJpaController(EntityManagerFactory emf) {
         this.emf = emf;

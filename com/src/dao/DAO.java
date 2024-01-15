@@ -2,7 +2,6 @@ package dao;
 
 import model.*;
 import controller.*;
-import java.util.List;
 
 public class DAO {
     DirectorJpaController directorJpa = new DirectorJpaController();

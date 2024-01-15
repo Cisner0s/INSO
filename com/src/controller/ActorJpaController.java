@@ -16,7 +16,11 @@ import model.Actor;
  */
 public class ActorJpaController implements Serializable {
 
-    private EntityManagerFactory emf;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private EntityManagerFactory emf;
 
     public ActorJpaController(EntityManagerFactory emf) {
         this.emf = emf;

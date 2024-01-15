@@ -14,7 +14,11 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Actor implements Serializable {
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int actor_ID;
     private String nombre;

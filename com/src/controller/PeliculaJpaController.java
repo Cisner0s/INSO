@@ -2,7 +2,6 @@ package controller;
 
 import model.Pelicula;
 import java.io.Serializable;
-import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -14,7 +13,11 @@ import javax.persistence.Persistence;
  */
 public class PeliculaJpaController implements Serializable {
 
-    private EntityManagerFactory emf;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private EntityManagerFactory emf;
 
     public PeliculaJpaController(EntityManagerFactory emf) {
         this.emf = emf;

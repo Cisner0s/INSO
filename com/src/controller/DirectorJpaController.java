@@ -14,7 +14,11 @@ import javax.persistence.Persistence;
  */
 public class DirectorJpaController implements Serializable {
 
-    private EntityManagerFactory emf;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private EntityManagerFactory emf;
 
     public DirectorJpaController(EntityManagerFactory emf) {
         this.emf = emf;
