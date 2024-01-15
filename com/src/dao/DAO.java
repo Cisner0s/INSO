@@ -35,10 +35,16 @@ public class DAO {
     public void guardarResena(Resena resena){
         resenaJpa.create(resena);
     }
+	public void guardarAdmnistrador(Administrador admin) {
+        adminJpa.create(admin);
+	}
+	public void guardarCritica(Critica critica) {
+        criticaJpa.create(critica);
+	}
+	public void guardarCritico(Critico critico) {
+        criticoJpa.create(critico);
+	}
     
-//    public void guardarAdministrador(Administrador administrador) {
-//    	administradorJpa.
-//    }
   /* public List<Director> traerDirector(){
        return directorJpa.findDirectorEntities();
    }*/
