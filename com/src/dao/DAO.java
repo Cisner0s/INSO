@@ -4,7 +4,7 @@ import com.mycompany.inso.LOG.*;
 import java.util.List;
 
 
-public class ControladorBD {
+public class DAO {
     DirectorJpaController directorJpa = new DirectorJpaController();
     PeliculaJpaController peliJpa = new PeliculaJpaController();
     SerieJpaController serieJpa = new SerieJpaController();

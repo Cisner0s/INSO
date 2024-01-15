@@ -12,7 +12,7 @@ import com.mycompany.inso.LOG.Director;
  *
  * @author rodri
  */
-public class Inso {
+public class Main {
 
     public static void main(String[] args) {
     	InicioSesion i = new InicioSesion();
