@@ -1,8 +1,8 @@
-package com.mycompany.inso.BD;
+package dao;
 
-import com.mycompany.inso.LOG.*;
+import model.*;
+import controller.*;
 import java.util.List;
-
 
 public class DAO {
     DirectorJpaController directorJpa = new DirectorJpaController();

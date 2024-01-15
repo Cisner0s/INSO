@@ -1,6 +1,6 @@
-package com.mycompany.inso.BD;
+package controller;
 
-import com.mycompany.inso.LOG.Usuario;
+import model.Usuario;
 import java.io.Serializable;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;

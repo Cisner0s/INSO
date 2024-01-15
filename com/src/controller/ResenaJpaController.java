@@ -1,6 +1,6 @@
-package com.mycompany.inso.BD;
+package controller;
 
-import com.mycompany.inso.LOG.Resena;
+import model.Resena;
 import java.io.Serializable;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
