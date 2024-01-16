@@ -21,7 +21,7 @@ import javax.persistence.criteria.Root;
  *
  * @author rodri
  */
-class CriticoJpaController{
+public class CriticoJpaController{
      private EntityManagerFactory emf;
 
     public CriticoJpaController(EntityManagerFactory emf) {

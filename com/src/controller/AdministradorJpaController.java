@@ -21,7 +21,7 @@ import javax.persistence.criteria.Root;
  *
  * @author rodri
  */
-class AdministradorJpaController {
+public class AdministradorJpaController {
          private EntityManagerFactory emf;
 
     public AdministradorJpaController(EntityManagerFactory emf) {
