@@ -1,4 +1,4 @@
-package com.mycompany.inso.LOG;
+package model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

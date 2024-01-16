@@ -1,6 +1,6 @@
-package com.mycompany.inso.LOG;
+package model;
 
-import com.mycompany.inso.LOG.*;
+import controller.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

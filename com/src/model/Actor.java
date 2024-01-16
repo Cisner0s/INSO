@@ -1,4 +1,4 @@
-package com.mycompany.inso.LOG;
+package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
-package com.mycompany.inso.BD;
+package controller;
 
-import com.mycompany.inso.LOG.Pelicula;
+import model.Pelicula;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

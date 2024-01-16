@@ -1,6 +1,6 @@
-package com.mycompany.inso.BD;
+package controller;
 
-import com.mycompany.inso.LOG.Serie;
+import model.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
