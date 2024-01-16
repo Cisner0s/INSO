@@ -2,11 +2,17 @@ package com.mycompany.inso.BD;
 
 import com.mycompany.inso.LOG.Pelicula;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -58,4 +64,28 @@ public class PeliculaJpaController implements Serializable {
             }
         }
     }*/
+    public List<Pelicula> findPeliculaEntities() {
+    EntityManager entityManager = emf;
+    List<Pelicula> peliculas = new ArrayList<>();
+
+    try {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Pelicula> criteriaQuery = criteriaBuilder.createQuery(Pelicula.class);
+        Root<Pelicula> root = criteriaQuery.from(Pelicula.class);
+        criteriaQuery.select(root);
+
+        TypedQuery<Pelicula> query = entityManager.createQuery(criteriaQuery);
+        peliculas = query.getResultList();
+    } catch (Exception e) {
+        // Manejar la excepción de manera apropiada (log, relanzar, etc.)
+        e.printStackTrace();
+    } finally {
+        if (entityManager != null && entityManager.isOpen()) {
+            entityManager.close();
+        }
+    }
+
+    return peliculas;
+}
+
 }

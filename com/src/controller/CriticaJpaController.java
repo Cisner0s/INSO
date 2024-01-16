@@ -5,11 +5,17 @@
 package com.mycompany.inso.BD;
 
 import com.mycompany.inso.LOG.Critica;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -26,7 +32,7 @@ class CriticaJpaController {
         emf = Persistence.createEntityManagerFactory("InsoPU");
     }
 
-    public void create(Critica critica) {
+    /*public void create(Critica critica) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
@@ -43,16 +49,56 @@ class CriticaJpaController {
                 em.close();
             }
         }
-    }
+    }*/
+    public void addCritica(Critica critica) {
+        EntityManager entityManager = emf.createEntityManager();
+        EntityTransaction transaction = null;
 
-    public Critica findCritica(int id) {
-        EntityManager em = emf.createEntityManager();
         try {
-            return em.find(Critica.class, id);
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
+            // Begin transaction
+            transaction = entityManager.getTransaction();
+            transaction.begin();
+
+            // Guardar el objeto de crítica
+            entityManager.persist(critica);
+
+            // Commit the transaction
+            transaction.commit();
+
+            System.out.println("Critica added successfully!");
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
             }
+            e.printStackTrace();
+        } finally {
+            // Close EntityManager
+            entityManager.close();
         }
     }
+
+    public List<Critica> findCriticaEntities() {
+    EntityManager entityManager = emf.createEntityManager();
+    List<Critica> criticas = new ArrayList<>();
+
+    try {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Critica> criteriaQuery = criteriaBuilder.createQuery(Critica.class);
+        Root<Critica> root = criteriaQuery.from(Critica.class);
+        criteriaQuery.select(root);
+
+        TypedQuery<Critica> query = entityManager.createQuery(criteriaQuery);
+        criticas = query.getResultList();
+    } catch (Exception e) {
+        // Manejar la excepción de manera apropiada (log, relanzar, etc.)
+        e.printStackTrace();
+    } finally {
+        if (entityManager != null && entityManager.isOpen()) {
+            entityManager.close();
+        }
+    }
+
+    return criticas;
+}
+
 }
