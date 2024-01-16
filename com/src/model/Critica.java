@@ -1,54 +1,94 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package model;
+package com.mycompany.inso.LOG;
 
+import com.mycompany.inso.LOG.*;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-/**
- *
- * @author rodri
- */
+// Importar otras anotaciones según sea necesario
 @Entity
 public class Critica {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    int idCritica;
-    String tituloCritica;
-    String textoCritica;
+    private int critica_id;
+    private String titulo;
+    private String texto;
 
-    public Critica(int idCritica, String tituloCritica, String textoCritica) {
-        this.idCritica = idCritica;
-        this.tituloCritica = tituloCritica;
-        this.textoCritica = textoCritica;
+     @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "pelicula_id")
+    private Pelicula pelicula;
+
+    // Otros campos y métodos según sea necesario
+    @ManyToOne
+    @JoinColumn(name = "serie_id") // Asegúrate de que coincida con el nombre de la columna en la base de datos
+    private Serie serie;
+
+    @ManyToOne
+    @JoinColumn(name = "critico_id")  // Corregir el nombre de la columna en JoinColumn
+    private Critico critico;
+    public Critica(String titulo,String texto) {
+        this.titulo = titulo;
+        this.texto=texto;
     }
 
-    public int getIdCritica() {
-        return idCritica;
+    public int getCritica_id() {
+        return critica_id;
     }
 
-    public void setIdCritica(int idCritica) {
-        this.idCritica = idCritica;
+    public void setCritica_id(int critica_id) {
+        this.critica_id = critica_id;
     }
 
-    public String getTituloCritica() {
-        return tituloCritica;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setTituloCritica(String tituloCritica) {
-        this.tituloCritica = tituloCritica;
+    public Critico getCritico() {
+        return critico;
     }
 
-    public String getTextoCritica() {
-        return textoCritica;
+    public void setCritico(Critico critico) {
+        this.critico = critico;
     }
 
-    public void setTextoCritica(String textoCritica) {
-        this.textoCritica = textoCritica;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
-    
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public Serie getSerie() {
+        return serie;
+    }
+
+    public void setSerie(Serie serie) {
+        this.serie = serie;
+    }
+
+   
+
+    public Pelicula getPelicula() {
+        return pelicula;
+    }
+
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
+    }
+
+    // Otros métodos según sea necesario
+
+    public Critica() {
+        // Constructor vacío
+    }
 }

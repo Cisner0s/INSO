@@ -2,20 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package com.mycompany.inso.LOG;
+
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;/**
- *
- * @author rodri
- */
+import javax.persistence.OneToMany;
+
 @Entity
 public class Serie {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int serie_id;
@@ -28,18 +30,36 @@ public class Serie {
     private double Duracion_Med_Episodio;
     private String imagen;
     private int n_Temporadas;
-    
-    @ManyToOne
-    private Estudio estudio;
-    @ManyToOne
-    private Director director;
-    @ManyToMany
-    private List<Actor> actor;
-    @OneToMany
-    private List<Resena> resena;
 
-    public Serie(int serie_id, String titulo, String fecha_Estreno, String genero, int presupuesto, int ganacias, int n_Episodios, double Duracion_Med_Episodio, String imagen, int n_Temporadas, Estudio estudio, Director director) {
-        this.serie_id = serie_id;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+@JoinColumn(name = "director_id")
+private Director director;
+
+    
+    @ManyToOne(cascade = CascadeType.PERSIST)
+@JoinColumn(name = "estudio_id")
+private Estudio estudio;
+
+    
+    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "series")
+    private List<Actor> actores;
+
+
+    
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL)
+    private List<Resena> resenas;
+@OneToMany(mappedBy = "serie", cascade = CascadeType.PERSIST)
+    private List<Critica> criticas;
+
+    public Serie() {
+
+    }
+
+    public Serie( String titulo, String fecha_Estreno, String genero, int presupuesto, int ganacias,
+            int n_Episodios, double Duracion_Med_Episodio, String imagen, int n_Temporadas, Estudio estudio,
+            Director director) {
+     
         this.titulo = titulo;
         this.fecha_Estreno = fecha_Estreno;
         this.genero = genero;
@@ -149,21 +169,19 @@ public class Serie {
         this.director = director;
     }
 
-    public List<Actor> getActor() {
-        return actor;
+    public List<Actor> getActores() {
+        return actores;
     }
 
-    public void setActor(List<Actor> actor) {
-        this.actor = actor;
+    public void setActores(List<Actor> actores) {
+        this.actores = actores;
     }
 
     public List<Resena> getResena() {
-        return resena;
+        return resenas;
     }
 
     public void setResena(List<Resena> resena) {
-        this.resena = resena;
+        this.resenas = resena;
     }
-    
-    
 }

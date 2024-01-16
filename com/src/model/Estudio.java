@@ -2,31 +2,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package com.mycompany.inso.LOG;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 @Entity
 public class Estudio {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int estudio_id;
     private String nombre;
-    private String fecha_FUndacion;
+    private String fecha_Fundacion;
     private String propietario;
     private String sedes;
     private int patrimonio;
-    
-    
-    public Estudio(int estudio_id, String nombre, String fecha_FUndacion, String propietario, String sedes, int patrimonio) {
-        this.estudio_id = estudio_id;
+
+    public Estudio() {
+
+    }
+
+    public Estudio(String nombre, String fecha_Fundacion, String propietario, String sedes, int patrimonio) {
         this.nombre = nombre;
-        this.fecha_FUndacion = fecha_FUndacion;
+        this.fecha_Fundacion = fecha_Fundacion;
         this.propietario = propietario;
         this.sedes = sedes;
         this.patrimonio = patrimonio;
-   
     }
 
     public int getEstudio_id() {
@@ -45,12 +49,12 @@ public class Estudio {
         this.nombre = nombre;
     }
 
-    public String getFecha_FUndacion() {
-        return fecha_FUndacion;
+    public String getFecha_Fundacion() {
+        return fecha_Fundacion;
     }
 
-    public void setFecha_FUndacion(String fecha_FUndacion) {
-        this.fecha_FUndacion = fecha_FUndacion;
+    public void setFecha_Fundacion(String fecha_Fundacion) {
+        this.fecha_Fundacion = fecha_Fundacion;
     }
 
     public String getPropietario() {
@@ -76,7 +80,4 @@ public class Estudio {
     public void setPatrimonio(int patrimonio) {
         this.patrimonio = patrimonio;
     }
-
-
-    
 }

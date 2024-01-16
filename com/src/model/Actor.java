@@ -1,21 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package model;
+package com.mycompany.inso.LOG;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Actor implements Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int actor_ID;
     private String nombre;
@@ -26,9 +26,35 @@ public class Actor implements Serializable {
     private String premios;
     private String imagen;
     
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+        name = "PELICULA_ACTOR", 
+        joinColumns = @JoinColumn(name = "ACTOR_ID"), 
+        inverseJoinColumns = @JoinColumn(name = "PELICULA_ID")
+    )
+    private List<Pelicula> peliculas;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+        name = "SERIE_ACTOR", 
+        joinColumns = @JoinColumn(name = "ACTOR_ID"), 
+        inverseJoinColumns = @JoinColumn(name = "SERIE_ID")
+    )
+    private List<Serie> series;
 
-    public Actor(int actor_ID, String nombre, String fecha_Nacimiento, String sexo, String lugar_nacimiento, String nacionalidad, String premios, String imagen) {
-        this.actor_ID = actor_ID;
+    public List<Serie> getSeries() {
+        return series;
+    }
+
+    public void setSeries(List<Serie> series) {
+        this.series = series;
+    }
+
+
+    public Actor() {
+        
+    }
+    
+    public Actor(String nombre, String fecha_Nacimiento, String sexo, String lugar_nacimiento, String nacionalidad, String premios, String imagen) {
         this.nombre = nombre;
         this.fecha_Nacimiento = fecha_Nacimiento;
         this.sexo = sexo;
@@ -102,6 +128,13 @@ public class Actor implements Serializable {
         this.imagen = imagen;
     }
 
+    public List<Pelicula> getPeliculas() {
+        return peliculas;
+    }
 
-    
+    public void setPeliculas(List<Pelicula> peliculas) {
+        this.peliculas = peliculas;
+    }
+
+
 }

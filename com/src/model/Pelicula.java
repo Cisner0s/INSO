@@ -2,17 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package com.mycompany.inso.LOG;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
- @Entity
+
+@Entity
 public class Pelicula {
     
     @Id
@@ -22,27 +26,29 @@ public class Pelicula {
     private String fecha_Estreno;
     private String genero;
     private int presupuesto;
-    private int ganacias;
+    private int ganancias;
     private String sinopsis;
     private String imagen;
     
     @ManyToOne
-    private Estudio estudio;
-    @ManyToOne
+    @JoinColumn(name = "director_id") // Mapea con el campo director_id en la base de datos
     private Director director;
-    @ManyToMany
-    private List<Actor> actor;
-    @OneToMany
-    private List<Resena> resena;
     
-    public Estudio getEstudio() {
-        return estudio;
-    }
+    @ManyToOne
+    private Estudio estudio;
+    
+    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "peliculas")
+    private List<Actor> actores;
 
-    public void setEstudio(Estudio estudio) {
-        this.estudio = estudio;
-    }
 
+    
+    @OneToMany(mappedBy = "pelicula", cascade = CascadeType.ALL)
+    private List<Resena> resenas;
+
+    @OneToMany(mappedBy = "pelicula", cascade = CascadeType.PERSIST)
+private List<Critica> criticas;
+
+    
     public int getPelicula_id() {
         return pelicula_id;
     }
@@ -83,12 +89,12 @@ public class Pelicula {
         this.presupuesto = presupuesto;
     }
 
-    public int getGanacias() {
-        return ganacias;
+    public int getGanancias() {
+        return ganancias;
     }
 
-    public void setGanacias(int ganacias) {
-        this.ganacias = ganacias;
+    public void setGanancias(int ganancias) {
+        this.ganancias = ganancias;
     }
 
     public String getSinopsis() {
@@ -115,32 +121,44 @@ public class Pelicula {
         this.director = director;
     }
 
-    public List<Actor> getActor() {
-        return actor;
+    public Estudio getEstudio() {
+        return estudio;
     }
 
-    public void setActor(List<Actor> actor) {
-        this.actor = actor;
+    public void setEstudio(Estudio estudio) {
+        this.estudio = estudio;
     }
 
-    public Pelicula(String titulo, String fecha_Estreno, String genero, int presupuesto, int ganacias, String sinopsis, String imagen, Director director,Estudio estudio) {
+    public List<Actor> getActores() {
+        return actores;
+    }
+
+    public void setActores(List<Actor> actores) {
+        this.actores = actores;
+    }
+
+    public List<Resena> getResenas() {
+        return resenas;
+    }
+
+    public void setResenas(List<Resena> resenas) {
+        this.resenas = resenas;
+    }
+
+    public Pelicula(String titulo, String fecha_Estreno, String genero, int presupuesto, int ganancias, String sinopsis, String imagen, Director director, Estudio estudio, List<Actor> actores) {
         this.titulo = titulo;
         this.fecha_Estreno = fecha_Estreno;
         this.genero = genero;
         this.presupuesto = presupuesto;
-        this.ganacias = ganacias;
+        this.ganancias = ganancias;
         this.sinopsis = sinopsis;
         this.imagen = imagen;
         this.director = director;
-        this.estudio=estudio;
+        this.estudio = estudio;
+        this.actores = actores;
     }
 
-    public List<Resena> getResena() {
-        return resena;
+    public Pelicula() {
+        // Constructor vacío
     }
-
-    public void setResena(List<Resena> resena) {
-        this.resena = resena;
-    }
-    
 }
