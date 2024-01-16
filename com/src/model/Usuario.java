@@ -19,44 +19,46 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int usuario_id;
     private String nombreUsuario;
-    private String nombreCOmpleto;
+    private String nombreCompleto;
     private int rol;
     private String contraseña;
     
     @OneToMany
     private List<Resena> resena;
 
-    public Usuario(int usuario_id, String nombreUsuario, String nombreCOmpleto, int rol, String contraseña) {
+    public Usuario(int usuario_id, String nombreUsuario, String nombreCompleto, int rol, String contraseña) {
         this.usuario_id = usuario_id;
         this.nombreUsuario = nombreUsuario;
-        this.nombreCOmpleto = nombreCOmpleto;
+        this.nombreCompleto = nombreCompleto;
         this.rol = rol;
         this.contraseña = contraseña;
         
     }
 
-    public int getUsuario_id() {
+    public int getUsuario_ID() {
         return usuario_id;
+    }
+    
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
     public void setUsuario_id(int usuario_id) {
         this.usuario_id = usuario_id;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
+
 
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public String getNombreCOmpleto() {
-        return nombreCOmpleto;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
 
     public void setNombreCOmpleto(String nombreCOmpleto) {
-        this.nombreCOmpleto = nombreCOmpleto;
+        this.nombreCompleto = nombreCOmpleto;
     }
 
     public int getRol() {
