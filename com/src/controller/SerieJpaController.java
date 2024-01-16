@@ -1,6 +1,6 @@
-package controller;
+package com.mycompany.inso.BD;
 
-import model.Serie;
+import com.mycompany.inso.LOG.Serie;
 import java.io.Serializable;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
@@ -14,11 +14,7 @@ import javax.persistence.Persistence;
  */
 public class SerieJpaController implements Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private EntityManagerFactory emf;
+    private EntityManagerFactory emf;
 
     public SerieJpaController(EntityManagerFactory emf) {
         this.emf = emf;

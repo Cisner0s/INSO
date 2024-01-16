@@ -1,8 +1,7 @@
-package controller;
+package com.mycompany.inso.BD;
 
-import model.Pelicula;
+import com.mycompany.inso.LOG.Pelicula;
 import java.io.Serializable;
-
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,40 +14,41 @@ import javax.persistence.Persistence;
  */
 public class PeliculaJpaController implements Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private EntityManagerFactory emf;
+    private EntityManager emf;
 
-    public PeliculaJpaController(EntityManagerFactory emf) {
+
+    public PeliculaJpaController(EntityManager emf) {
         this.emf = emf;
     }
 
     public PeliculaJpaController() {
-        emf = Persistence.createEntityManagerFactory("InsoPU");
+        emf = Persistence.createEntityManagerFactory("InsoPU").createEntityManager();
     }
 
     public void create(Pelicula pelicula) {
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+        EntityTransaction tx = null;
+
         try {
+            tx = emf.getTransaction();
             tx.begin();
-            em.persist(pelicula);
+
+            // Persistir la entidad
+            emf.persist(pelicula);
+
             tx.commit();
         } catch (Exception ex) {
-            if (findPelicula(pelicula.getPelicula_id()) != null) {
-                throw new EntityExistsException("Pelicula " + pelicula + " already exists.", ex);
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
             }
-            throw ex;
+            ex.printStackTrace(); // Manejar la excepción adecuadamente
         } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
+            if (emf != null && emf.isOpen()) {
+                emf.close();
             }
         }
     }
 
-    public Pelicula findPelicula(int id) {
+    /*public Pelicula findPelicula(int id) {
         EntityManager em = emf.createEntityManager();
         try {
             return em.find(Pelicula.class, id);
@@ -57,5 +57,5 @@ public class PeliculaJpaController implements Serializable {
                 em.close();
             }
         }
-    }
+    }*/
 }

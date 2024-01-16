@@ -1,7 +1,10 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.mycompany.inso.BD;
 
-import com.mycompany.inso.LOG.Usuario;
-import java.io.Serializable;
+import com.mycompany.inso.LOG.*;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,28 +15,27 @@ import javax.persistence.Persistence;
  *
  * @author rodri
  */
-public class UsuarioJpaController implements Serializable {
+class CriticoJpaController{
+     private EntityManagerFactory emf;
 
-    private EntityManagerFactory emf;
-
-    public UsuarioJpaController(EntityManagerFactory emf) {
+    public CriticoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
 
-    public UsuarioJpaController() {
+    public CriticoJpaController() {
         emf = Persistence.createEntityManagerFactory("InsoPU");
     }
 
-    public void create(Usuario usuario) {
+    public void create(Critico critico) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-            em.persist(usuario);
+            em.persist(critico);
             tx.commit();
         } catch (Exception ex) {
-            if (findUsuario(usuario.getUsuario_id()) != null) {
-                throw new EntityExistsException("Usuario " + usuario + " already exists.", ex);
+            if (findCritico(critico.getId_Critico()) != null) {
+                throw new EntityExistsException("Director " + critico + " already exists.", ex);
             }
             throw ex;
         } finally {
@@ -43,10 +45,10 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
-    public Usuario findUsuario(int id) {
+    public Critico findCritico(int id) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.find(Usuario.class, id);
+            return em.find(Critico.class, id);
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();

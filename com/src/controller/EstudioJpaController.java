@@ -1,6 +1,6 @@
-package controller;
+package com.mycompany.inso.BD;
 
-import model.Estudio;
+import com.mycompany.inso.LOG.Estudio;
 import java.io.Serializable;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
@@ -14,39 +14,39 @@ import javax.persistence.Persistence;
  */
 public class EstudioJpaController implements Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private EntityManagerFactory emf;
+    private EntityManager em;
 
-    public EstudioJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
+    public EstudioJpaController(EntityManager em) {
+        this.em = em;
     }
 
     public EstudioJpaController() {
-        emf = Persistence.createEntityManagerFactory("InsoPU");
+        em = Persistence.createEntityManagerFactory("InsoPU").createEntityManager();
     }
 
     public void create(Estudio estudio) {
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+        EntityTransaction tx = null;
+
         try {
+            tx = em.getTransaction();
             tx.begin();
+
+            // Persistir la entidad
             em.persist(estudio);
+
             tx.commit();
         } catch (Exception ex) {
-            if (findEstudio(estudio.getEstudio_id()) != null) {
-                throw new EntityExistsException("Estudio " + estudio + " already exists.", ex);
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
             }
-            throw ex;
+            ex.printStackTrace(); // Manejar la excepción adecuadamente
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();
             }
         }
     }
-
+/*
     public Estudio findEstudio(int id) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -56,5 +56,5 @@ public class EstudioJpaController implements Serializable {
                 em.close();
             }
         }
-    }
+    }*/
 }

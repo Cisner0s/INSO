@@ -1,12 +1,13 @@
-package controller;
+package com.mycompany.inso.BD;
 
-import model.Director;
+import com.mycompany.inso.LOG.Director;
 import java.io.Serializable;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import org.eclipse.persistence.sessions.factories.SessionFactory;
 
 /**
  *
@@ -14,41 +15,74 @@ import javax.persistence.Persistence;
  */
 public class DirectorJpaController implements Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private EntityManagerFactory emf;
+   /*private EntityManager em;
 
-    public DirectorJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
+    public DirectorJpaController(EntityManager em) {
+        this.em = em;
     }
 
     public DirectorJpaController() {
-        emf = Persistence.createEntityManagerFactory("InsoPU");
+        em = Persistence.createEntityManagerFactory("InsoPU").createEntityManager();
     }
 
     public void create(Director director) {
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+        EntityTransaction tx = null;
+
         try {
+            tx = em.getTransaction();
             tx.begin();
+
+            // Persistir la entidad
             em.persist(director);
+
             tx.commit();
         } catch (Exception ex) {
-            if (findDirector(director.getDirector_id()) != null) {
-                throw new EntityExistsException("Director " + director + " already exists.", ex);
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
             }
-            throw ex;
+            ex.printStackTrace(); // Manejar la excepción adecuadamente
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();
             }
         }
+    }*/
+     private final EntityManagerFactory entityManagerFactory;
+
+    public DirectorJpaController() {
+        // "your-persistence-unit" should be replaced with the name of your persistence unit
+        entityManagerFactory = Persistence.createEntityManagerFactory("InsoPU");
     }
 
+    public void addDirector(Director director) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = null;
+        
+        try {
+            // Begin transaction
+            transaction = entityManager.getTransaction();
+            transaction.begin();
+
+            // Save the director object
+            entityManager.persist(director);
+
+            // Commit the transaction
+            transaction.commit();
+
+            System.out.println("Director added successfully!");
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            // Close EntityManager
+            entityManager.close();
+        }
+    }
+/*
     public Director findDirector(int id) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = em.createEntityManager();
         try {
             return em.find(Director.class, id);
         } finally {
@@ -56,5 +90,5 @@ public class DirectorJpaController implements Serializable {
                 em.close();
             }
         }
-    }
+    }*/
 }

@@ -1,14 +1,12 @@
-package controller;
+package com.mycompany.inso.BD;
 
+import com.mycompany.inso.LOG.Actor;
 import java.io.Serializable;
-
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-
-import model.Actor;
 
 /**
  *
@@ -16,11 +14,7 @@ import model.Actor;
  */
 public class ActorJpaController implements Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private EntityManagerFactory emf;
+    private EntityManagerFactory emf;
 
     public ActorJpaController(EntityManagerFactory emf) {
         this.emf = emf;
