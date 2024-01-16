@@ -1,6 +1,5 @@
 package view;
 
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -175,7 +174,7 @@ public class InicioWindow extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*if (u.getRol() == "Administrador") {
-					Admin a = new Admin(tipo, nombre);
+					AdminWindow a = new AdminWindow(tipo, nombre, u);
 					a.setVisible();
 					setVisible();
 				} else {*/
@@ -192,7 +191,7 @@ public class InicioWindow extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*if (u.getRol() == "Administrador") {
-				Admin a = new Admin(tipo, nombre);
+				AdminWindow a = new AdminWindow(tipo, nombre, u);
 				a.setVisible();
 				setVisible();
 			} else {*/
@@ -256,7 +255,7 @@ public class InicioWindow extends JFrame {
 					JOptionPane.showMessageDialog(null, "Selecciona el tipo de contenido que quieres añadir.", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 				if (checked == true) {*/
-					AdminWindow a = new AdminWindow(/*"Nuevo", "tipo"*/);
+					AdminWindow a = new AdminWindow(/*"Nuevo", "tipo", u*/);
 					a.setVisible(true);
 					setVisible(false);
 				//}
